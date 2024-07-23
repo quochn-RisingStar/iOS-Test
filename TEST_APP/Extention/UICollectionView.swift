@@ -46,6 +46,14 @@ public extension UICollectionView {
         }
         return view
     }
+
+    func centerItemsInCollectionView(cellWidth: Double, numberOfItems: Double, spaceBetweenCell: Double) {
+        let totalWidth = cellWidth * numberOfItems
+        let totalSpacingWidth = spaceBetweenCell * (numberOfItems - 1)
+        let leftInset = (self.frame.width - CGFloat(totalWidth + totalSpacingWidth)) / 2
+        let rightInset = leftInset
+        self.contentInset = UIEdgeInsets(top: 0, left: leftInset, bottom: 0, right: rightInset)
+    }
 }
 
 extension UICollectionView {

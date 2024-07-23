@@ -25,7 +25,6 @@ class BigImageCVCell: UICollectionViewCell {
     func configView(product: Product, index: Int) {
         imageView.image = product.images[index]
         priceToplabel.text = product.price
-
     }
 }
 

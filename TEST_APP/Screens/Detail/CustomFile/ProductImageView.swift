@@ -14,7 +14,6 @@ class ProductImageView: UIView {
     @IBOutlet private weak var pageControl: UIPageControl!
     private var currentPageIndex: Int = 0
     private var producData: Product?
-//    private var collectionViewSize =
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -39,9 +38,24 @@ class ProductImageView: UIView {
         bigImageCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0),
                                             at: .centeredHorizontally,
                                             animated: true)
+        
+        updateContentInset(item: producData.images.count)
     }
 
-    func setupUI() {
+    private func updateContentInset(item: Int) {
+        let widthCollectionView = UIScreen.main.bounds.width - (DeviceUtility.isIpad() ? 120 : 32)
+        let contentWidth = CGFloat(item * 100)
+        let contentWidthIsShoter = contentWidth < widthCollectionView
+        if  contentWidthIsShoter {
+            let offset = (widthCollectionView - contentWidth) / 2
+            listImageCollectionView.contentInset = .init(top: 0,
+                                                left: contentWidthIsShoter ? offset : 0,
+                                                bottom: 0,
+                                                right: contentWidthIsShoter ? offset : 0)
+        }
+    }
+
+    private func setupUI() {
         listImageCollectionView.register(ImageCVCell.self)
         listImageCollectionView.delegate = self
         listImageCollectionView.dataSource = self
@@ -54,7 +68,9 @@ class ProductImageView: UIView {
 }
 
 extension ProductImageView: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         if listImageCollectionView == collectionView {
             return .init(width: 100, height: 60)
         } else {
@@ -68,7 +84,7 @@ extension ProductImageView: UICollectionViewDelegate, UICollectionViewDelegateFl
         } else {
             listImageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
-        updateCurrentPageIndex(indexPath.item)
+        updateCurrentPageIndex(indexPath.row)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -79,17 +95,18 @@ extension ProductImageView: UICollectionViewDelegate, UICollectionViewDelegateFl
     }
 
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        (listImageCollectionView.cellForItem(at: indexPath) as? ImageCVCell)?.updateUI()
+        if collectionView == listImageCollectionView {
+            (collectionView.cellForItem(at: indexPath) as? ImageCVCell)?.updateUI()
+        }
     }
 
     private func updateCurrentPageIndex(_ index: Int) {
         currentPageIndex = index
         pageControl.currentPage = index
+        (listImageCollectionView.cellForItem(at: IndexPath(item: index, section: 0)) as? ImageCVCell)?.updateUI()
         listImageCollectionView.reloadData()
         listImageCollectionView.selectItem(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .centeredHorizontally)
-        (listImageCollectionView.cellForItem(at: IndexPath(row: index, section: 0)) as? ImageCVCell)?.updateUI()
     }
-    
 }
 
 extension ProductImageView: UICollectionViewDataSource, UIScrollViewDelegate {
@@ -105,7 +122,7 @@ extension ProductImageView: UICollectionViewDataSource, UIScrollViewDelegate {
             return cell
         } else {
             let cell = collectionView.dequeue(BigImageCVCell.self, for: indexPath)
-             cell.configView(product: producData, index: indexPath.row)
+            cell.configView(product: producData, index: indexPath.row)
             return cell
         }
     }

@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="358" height="305"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="90V-bF-nm0">
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="90V-bF-nm0">
                         <rect key="frame" x="0.0" y="0.0" width="358" height="305"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eNh-8e-EkO">
@@ -93,10 +93,10 @@
     <resources>
         <image name="image_mock" width="3200" height="2133"/>
         <namedColor name="bg_color">
-            <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="bg_green">
-            <color red="0.40392156862745099" green="0.59607843137254901" blue="0.50588235294117645" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.40392156862745099" green="0.59607843137254901" blue="0.50588235294117645" alpha="0.94999998807907104" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

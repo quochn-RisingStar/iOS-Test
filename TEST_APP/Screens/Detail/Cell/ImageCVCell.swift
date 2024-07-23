@@ -12,31 +12,16 @@ class ImageCVCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setUpUI()
-    }
-
-    func setUpUI() {
+        layer.borderWidth = 2.0
         updateCornerRadius(6)
     }
 
     func configView(product: Product, index: Int) {
         imageView.image = product.images[index]
+        updateUI()
     }
 
     func updateUI() {
-        layer.borderWidth = 2.0
         layer.borderColor = isSelected ? UIColor.yellow.cgColor : UIColor.clear.cgColor
     }
-}
-
-enum TypeCell {
-    case bigCell, smallCell, ProductCell
-}
-
-struct Product {
-    var name: String
-    var images: [UIImage] = []
-    var price: String
-    var desc: String?
-    var offers: [String] = []
 }

@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ListProductView" customModule="TEST_APP" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="8jK-ks-FlX" id="5hk-3s-jao"/>
-                <outlet property="topView" destination="P0z-On-lsg" id="AYV-6I-kYV"/>
+                <outlet property="producLabel" destination="P0z-On-lsg" id="hXp-e3-8oD"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

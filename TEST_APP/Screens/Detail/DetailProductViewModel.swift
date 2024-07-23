@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension DetailProductVC {
     final class DetailProductViewModel: BaseViewModel {
@@ -26,3 +27,16 @@ extension DetailProductVC {
                                                   offers: ["10% off for a limited time", "Buy one, get one free"])]
     }
 }
+
+enum TypeCell {
+    case bigCell, smallCell, ProductCell
+}
+
+struct Product {
+    var name: String
+    var images: [UIImage] = []
+    var price: String
+    var desc: String?
+    var offers: [String] = []
+}
+

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -15,6 +15,7 @@
                 <outlet property="imageArrow" destination="5a6-kF-5KG" id="Xj3-KW-bZC"/>
                 <outlet property="seeMoreButton" destination="FzF-VQ-U5q" id="E9s-3R-xxL"/>
                 <outlet property="tabelView" destination="BRk-rP-IRQ" id="dtd-0o-ZS6"/>
+                <outlet property="titleLabel" destination="HKW-ND-v9m" id="QOM-gF-FaZ"/>
                 <outlet property="topView" destination="jBd-is-gIc" id="eED-5n-gcQ"/>
             </connections>
         </placeholder>
@@ -62,10 +63,10 @@
                                 <constraint firstItem="5a6-kF-5KG" firstAttribute="leading" secondItem="FzF-VQ-U5q" secondAttribute="trailing" constant="8" id="6Ih-Mp-jqe"/>
                                 <constraint firstAttribute="height" constant="20" id="IDZ-EW-2wS"/>
                                 <constraint firstItem="FzF-VQ-U5q" firstAttribute="leading" secondItem="HKW-ND-v9m" secondAttribute="trailing" constant="6" id="VR6-zH-Len"/>
+                                <constraint firstItem="FzF-VQ-U5q" firstAttribute="centerY" secondItem="jBd-is-gIc" secondAttribute="centerY" id="gCJ-tK-qLf"/>
                                 <constraint firstItem="HKW-ND-v9m" firstAttribute="top" secondItem="jBd-is-gIc" secondAttribute="top" id="gcj-Kc-hwl"/>
-                                <constraint firstItem="5a6-kF-5KG" firstAttribute="top" secondItem="jBd-is-gIc" secondAttribute="top" id="hMO-r9-pmU"/>
-                                <constraint firstItem="FzF-VQ-U5q" firstAttribute="top" secondItem="jBd-is-gIc" secondAttribute="top" id="o3z-8H-Xwo"/>
                                 <constraint firstItem="HKW-ND-v9m" firstAttribute="leading" secondItem="jBd-is-gIc" secondAttribute="leading" id="pED-S5-z2F"/>
+                                <constraint firstItem="5a6-kF-5KG" firstAttribute="centerY" secondItem="jBd-is-gIc" secondAttribute="centerY" id="svy-UA-u8f"/>
                             </constraints>
                         </view>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BRk-rP-IRQ">
@@ -89,7 +90,7 @@
     <resources>
         <image name="icon_up" width="32" height="24"/>
         <namedColor name="bg_color">
-            <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.98039215686274506" green="0.97647058823529409" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -15,11 +15,6 @@ class ProductCVCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setUpUI()
-    }
-
-    func setUpUI() {
-       
     }
 
     func configView(product: Product) {
@@ -30,10 +25,5 @@ class ProductCVCell: UICollectionViewCell {
         labelView.updateCornerRadius(13)
         labelView.layer.borderColor = UIColor.white.cgColor
         labelView.layer.borderWidth = 2
-    }
-
-    func updateUI() {
-        layer.borderWidth = 2.0
-        layer.borderColor = isSelected ? UIColor.clear.cgColor : UIColor.yellow.cgColor
     }
 }

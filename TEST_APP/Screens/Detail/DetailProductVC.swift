@@ -8,54 +8,45 @@
 import UIKit
 
 class DetailProductVC: UIViewController {
-    @IBOutlet weak var showMoreView: ShowMoreView!
-    @IBOutlet weak var productImageView: ProductImageView!
-    @IBOutlet weak var listProductView: ListProductView!
-    @IBOutlet weak var buyButton: UIButton!
-    @IBOutlet weak var showMoreHeightcontraint: NSLayoutConstraint!
-    @IBOutlet weak var ratioContraint: NSLayoutConstraint!
-    @IBOutlet weak var ratioBottomContraint: NSLayoutConstraint!
+    @IBOutlet weak private var showMoreView: ShowMoreView!
+    @IBOutlet weak private var productImageView: ProductImageView!
+    @IBOutlet weak private var listProductView: ListProductView!
+    @IBOutlet weak private var buyButton: UIButton!
+    @IBOutlet weak private var showMoreHeightcontraint: NSLayoutConstraint!
+    @IBOutlet weak private var ratioContraint: NSLayoutConstraint!
+    @IBOutlet weak private var widthScrollView: NSLayoutConstraint!
+    @IBOutlet weak private var leadingScrollViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var trailingScrollViewConstraint: NSLayoutConstraint!
+    @IBOutlet weak private var descTitleLabel: UILabel!
+    @IBOutlet weak private var descLabel: UILabel!
     let viewModel = DetailProductViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        showMoreView.delegate = self
-        buyButton.updateCornerRadius(16)
-        listProductView.delegate = self
-        listProductView.updateUI(listProduct: viewModel.lisProductData)
+        setupUI()
     }
 
     override func viewDidAppear(_ animated: Bool) {
+        updateScrollViewPadding()
         didTapProductAt(0)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-           super.viewWillTransition(to: size, with: coordinator)
-
-           coordinator.animate(alongsideTransition: { [weak self] (context) in
-               // Update ratio based on new size
-               self?.updateRatioConstraint(for: size)
-               self?.view.layoutIfNeeded()
-           }, completion: nil)
-       }
-
-       func updateRatioConstraint(for size: CGSize) {
-           if size.width > size.height {
-               let newRatio = 340 / 812.0
-               ratioContraint.constant = 2 / 3 * size.height
-               ratioBottomContraint.constant = 230.0 / 812.0 * size.height
-           } else {
-               // Portrait orientation
-               let newRatio = 812.0 / 340
-               ratioContraint.constant = 340 / 812.0
-               ratioBottomContraint.constant = 230.0 / 812.0
-           }
-       }
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { [weak self] (context) in
+            self?.updateRatioConstraint(for: size)
+            self?.view.layoutIfNeeded()
+        }, completion: { [weak self] _ in
+            self?.didTapProductAt(0)
+            self?.listProductView.reloadView()
+        })
+    }
 }
 
 extension DetailProductVC: ShowMoreViewDelegate {
     func didTapSeeMore(curentHeight: Double) {
         showMoreHeightcontraint.constant = curentHeight
+        view.layoutSubviews()
     }
 }
 
@@ -67,4 +58,25 @@ extension DetailProductVC: ListProductViewDelegate {
 }
 
 private extension DetailProductVC {
+    func setupUI() {
+        showMoreView.delegate = self
+        buyButton.updateCornerRadius(16)
+        listProductView.delegate = self
+        listProductView.updateUI(listProduct: viewModel.lisProductData)
+    }
+
+    func updateRatioConstraint(for size: CGSize) {
+        if size.width > size.height {
+            ratioContraint.constant = 180 / 375 * size.height - 70
+        } else {
+            ratioContraint.constant = 180 / 375 + 144
+        }
+    }
+
+    func updateScrollViewPadding() {
+        let padding: CGFloat = DeviceUtility.isIpad() ? 60 : 0
+        leadingScrollViewConstraint.constant = padding
+        trailingScrollViewConstraint.constant = -padding
+        view.layoutIfNeeded()
+    }
 }

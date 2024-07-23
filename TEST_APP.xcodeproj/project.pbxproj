@@ -36,6 +36,7 @@
 		84CCF2532C4E9623007415B7 /* ImageCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CCF2512C4E9623007415B7 /* ImageCVCell.swift */; };
 		84CCF2542C4E9623007415B7 /* ImageCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84CCF2522C4E9623007415B7 /* ImageCVCell.xib */; };
 		84CCF2562C4E97EE007415B7 /* UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CCF2552C4E97EE007415B7 /* UICollectionView.swift */; };
+		84D7FEFA2C4FCF6600DFE3AD /* AltFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D7FEF92C4FCF6600DFE3AD /* AltFunction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		84CCF2512C4E9623007415B7 /* ImageCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCVCell.swift; sourceTree = "<group>"; };
 		84CCF2522C4E9623007415B7 /* ImageCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageCVCell.xib; sourceTree = "<group>"; };
 		84CCF2552C4E97EE007415B7 /* UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView.swift; sourceTree = "<group>"; };
+		84D7FEF92C4FCF6600DFE3AD /* AltFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AltFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				84CCF2492C4E89FA007415B7 /* UIView.swift */,
 				84CCF2552C4E97EE007415B7 /* UICollectionView.swift */,
 				848A15AB2C4EFBB000F2EE56 /* UITableView.swift */,
+				84D7FEF92C4FCF6600DFE3AD /* AltFunction.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				84CCF2112C4E73FC007415B7 /* AppDelegate.swift in Sources */,
 				84CCF2412C4E7D50007415B7 /* ShowMoreView.swift in Sources */,
 				84CCF2342C4E7776007415B7 /* Logger.swift in Sources */,
+				84D7FEFA2C4FCF6600DFE3AD /* AltFunction.swift in Sources */,
 				84CCF24C2C4E8F12007415B7 /* ProductImageView.swift in Sources */,
 				84CCF2532C4E9623007415B7 /* ImageCVCell.swift in Sources */,
 				84CCF23F2C4E787A007415B7 /* DetailProductVC.swift in Sources */,

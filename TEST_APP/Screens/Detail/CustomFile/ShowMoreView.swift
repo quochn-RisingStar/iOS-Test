@@ -17,6 +17,7 @@ class ShowMoreView: UIView {
     @IBOutlet private weak var topView: UIView!
     @IBOutlet private weak var tabelView: UITableView!
     @IBOutlet private weak var seeMoreButton: UIButton!
+    @IBOutlet private weak var titleLabel: UILabel!
     weak var delegate: ShowMoreViewDelegate?
     private var isShowMore = false
     private var dataSource: [String] = []

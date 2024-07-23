@@ -12,10 +12,10 @@ protocol ListProductViewDelegate: AnyObject {
 }
 
 class ListProductView: UIView {
-    @IBOutlet private weak var topView: UILabel!
+    @IBOutlet private weak var producLabel: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
     weak var delegate: ListProductViewDelegate?
-    private var lisProduct: [Product] = []
+    private var listProduct: [Product] = []
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,14 +30,33 @@ class ListProductView: UIView {
     }
 
     func updateUI(listProduct: [Product]) {
-        self.lisProduct = listProduct
+        self.listProduct = listProduct
         collectionView.reloadData()
+        updateContentInset(item: listProduct.count)
     }
 
-    func setupUI() {
+    func reloadView() {
+        collectionView.reloadData()
+        updateContentInset(item: listProduct.count)
+    }
+
+    private func setupUI() {
         collectionView.register(ProductCVCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+
+    private func updateContentInset(item: Int) {
+        let widthCollectionView = UIScreen.main.bounds.width - (DeviceUtility.isIpad() ? 120 : 32)
+        let contentWidth = CGFloat(item * 220)
+        let contentWidthIsShoter = contentWidth < widthCollectionView
+        if  contentWidthIsShoter {
+            let offset = (widthCollectionView - contentWidth) / 2
+            collectionView.contentInset = .init(top: 0,
+                                                left: contentWidthIsShoter ? offset : 0,
+                                                bottom: 0,
+                                                right: contentWidthIsShoter ? offset : 0)
+        }
     }
 }
 
@@ -53,12 +72,12 @@ extension ListProductView: UICollectionViewDelegate, UICollectionViewDelegateFlo
 
 extension ListProductView: UICollectionViewDataSource, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        lisProduct.count
+        listProduct.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeue(ProductCVCell.self, for: indexPath)
-        cell.configView(product: lisProduct[indexPath.row])
+        cell.configView(product: listProduct[indexPath.row])
         return cell
     }
 }
