@@ -25,6 +25,7 @@ class ProductCVCell: UICollectionViewCell {
     func configView(product: Product) {
         priceLabel.text = product.price
         nameLabel.text = product.name
+        imageView.image = product.images.first
         imageView.updateCornerRadius(14)
         labelView.updateCornerRadius(13)
         labelView.layer.borderColor = UIColor.white.cgColor

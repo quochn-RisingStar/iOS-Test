@@ -8,11 +8,13 @@
 import UIKit
 
 class ProductImageView: UIView {
-    @IBOutlet private weak var topView: UILabel!
+    @IBOutlet private weak var productName: UILabel!
     @IBOutlet private weak var bigImageCollectionView: UICollectionView!
     @IBOutlet private weak var listImageCollectionView: UICollectionView!
     @IBOutlet private weak var pageControl: UIPageControl!
     private var currentPageIndex: Int = 0
+    private var producData: Product?
+//    private var collectionViewSize =
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -26,6 +28,19 @@ class ProductImageView: UIView {
         setupUI()
     }
 
+    func updateUI(producData: Product) {
+        self.producData = producData
+        pageControl.numberOfPages = producData.images.count
+        pageControl.currentPage = 0
+        productName.text = producData.name
+        listImageCollectionView.reloadData()
+        bigImageCollectionView.reloadData()
+        updateCurrentPageIndex(0)
+        bigImageCollectionView.scrollToItem(at: IndexPath(row: 0, section: 0),
+                                            at: .centeredHorizontally,
+                                            animated: true)
+    }
+
     func setupUI() {
         listImageCollectionView.register(ImageCVCell.self)
         listImageCollectionView.delegate = self
@@ -33,7 +48,7 @@ class ProductImageView: UIView {
         bigImageCollectionView.register(BigImageCVCell.self)
         bigImageCollectionView.delegate = self
         bigImageCollectionView.dataSource = self
-        pageControl.numberOfPages = 5
+        pageControl.numberOfPages = producData?.images.count ?? 0
         pageControl.currentPageIndicatorTintColor = .brown
     }
 }
@@ -53,7 +68,7 @@ extension ProductImageView: UICollectionViewDelegate, UICollectionViewDelegateFl
         } else {
             listImageCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
-        updateCurrentPageIndex(indexPath.row)
+        updateCurrentPageIndex(indexPath.item)
     }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -61,6 +76,10 @@ extension ProductImageView: UICollectionViewDelegate, UICollectionViewDelegateFl
             let index = Int(scrollView.contentOffset.x / scrollView.frame.width)
             updateCurrentPageIndex(index)
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        (listImageCollectionView.cellForItem(at: indexPath) as? ImageCVCell)?.updateUI()
     }
 
     private func updateCurrentPageIndex(_ index: Int) {
@@ -75,19 +94,18 @@ extension ProductImageView: UICollectionViewDelegate, UICollectionViewDelegateFl
 
 extension ProductImageView: UICollectionViewDataSource, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        producData?.images.count ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let producData else { return UICollectionViewCell() }
         if listImageCollectionView == collectionView {
-            let image = ["delete", "heart", "iPhone"].randomElement() ?? "iPhone"
             let cell = collectionView.dequeue(ImageCVCell.self, for: indexPath)
-            cell.configView(product: .init(name: "gia", image: image, price: "16.00$"))
+            cell.configView(product: producData, index: indexPath.row)
             return cell
         } else {
-            let image = ["delete", "heart", "iPhone"].randomElement() ?? "iPhone"
             let cell = collectionView.dequeue(BigImageCVCell.self, for: indexPath)
-             cell.configView(product: .init(name: "gia", image: image, price: "16.00$"))
+             cell.configView(product: producData, index: indexPath.row)
             return cell
         }
     }

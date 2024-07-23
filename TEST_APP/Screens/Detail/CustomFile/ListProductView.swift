@@ -7,9 +7,15 @@
 
 import UIKit
 
+protocol ListProductViewDelegate: AnyObject {
+    func didTapProductAt(_ index: Int)
+}
+
 class ListProductView: UIView {
     @IBOutlet private weak var topView: UILabel!
     @IBOutlet private weak var collectionView: UICollectionView!
+    weak var delegate: ListProductViewDelegate?
+    private var lisProduct: [Product] = []
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -21,6 +27,11 @@ class ListProductView: UIView {
         super.init(frame: frame)
         nibInit()
         setupUI()
+    }
+
+    func updateUI(listProduct: [Product]) {
+        self.lisProduct = listProduct
+        collectionView.reloadData()
     }
 
     func setupUI() {
@@ -36,19 +47,19 @@ extension ListProductView: UICollectionViewDelegate, UICollectionViewDelegateFlo
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.didTapProductAt(indexPath.row)
     }
 }
 
 extension ListProductView: UICollectionViewDataSource, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        lisProduct.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-            let image = ["delete", "heart", "iPhone"].randomElement() ?? "iPhone"
-            let cell = collectionView.dequeue(ProductCVCell.self, for: indexPath)
-            cell.configView(product: .init(name: "gia", image: image, price: "16.00$"))
-            return cell
+        let cell = collectionView.dequeue(ProductCVCell.self, for: indexPath)
+        cell.configView(product: lisProduct[indexPath.row])
+        return cell
     }
 }
 

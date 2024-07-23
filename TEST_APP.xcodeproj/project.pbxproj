@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		54E0CF842C4F8FB4006FE8C6 /* DeviceUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E0CF832C4F8FB4006FE8C6 /* DeviceUtility.swift */; };
 		848A15A22C4EAD0500F2EE56 /* ProductCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848A159F2C4EAD0400F2EE56 /* ProductCVCell.swift */; };
 		848A15A32C4EAD0500F2EE56 /* BigImageCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848A15A02C4EAD0500F2EE56 /* BigImageCVCell.xib */; };
 		848A15A42C4EAD0500F2EE56 /* ProductCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 848A15A12C4EAD0500F2EE56 /* ProductCVCell.xib */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		54E0CF832C4F8FB4006FE8C6 /* DeviceUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceUtility.swift; sourceTree = "<group>"; };
 		848A159F2C4EAD0400F2EE56 /* ProductCVCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCVCell.swift; sourceTree = "<group>"; };
 		848A15A02C4EAD0500F2EE56 /* BigImageCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BigImageCVCell.xib; sourceTree = "<group>"; };
 		848A15A12C4EAD0500F2EE56 /* ProductCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCVCell.xib; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				84CCF2332C4E7776007415B7 /* Logger.swift */,
+				54E0CF832C4F8FB4006FE8C6 /* DeviceUtility.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			files = (
 				84CCF2372C4E77D5007415B7 /* NSObject.swift in Sources */,
 				848A15AC2C4EFBB000F2EE56 /* UITableView.swift in Sources */,
+				54E0CF842C4F8FB4006FE8C6 /* DeviceUtility.swift in Sources */,
 				84CCF22F2C4E76C6007415B7 /* BaseViewModel.swift in Sources */,
 				84CCF2562C4E97EE007415B7 /* UICollectionView.swift in Sources */,
 				84CCF24A2C4E89FA007415B7 /* UIView.swift in Sources */,

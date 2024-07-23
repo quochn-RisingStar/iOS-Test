@@ -19,12 +19,13 @@ class ImageCVCell: UICollectionViewCell {
         updateCornerRadius(6)
     }
 
-    func configView(product: Product) {
+    func configView(product: Product, index: Int) {
+        imageView.image = product.images[index]
     }
 
     func updateUI() {
         layer.borderWidth = 2.0
-        layer.borderColor = isSelected ? UIColor.red.cgColor : UIColor.clear.cgColor
+        layer.borderColor = isSelected ? UIColor.yellow.cgColor : UIColor.clear.cgColor
     }
 }
 
@@ -34,6 +35,8 @@ enum TypeCell {
 
 struct Product {
     var name: String
-    var image: String
+    var images: [UIImage] = []
     var price: String
+    var desc: String?
+    var offers: [String] = []
 }

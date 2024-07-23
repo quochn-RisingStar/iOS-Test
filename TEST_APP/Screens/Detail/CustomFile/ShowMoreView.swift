@@ -19,6 +19,8 @@ class ShowMoreView: UIView {
     @IBOutlet private weak var seeMoreButton: UIButton!
     weak var delegate: ShowMoreViewDelegate?
     private var isShowMore = false
+    private var dataSource: [String] = []
+    
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -30,6 +32,12 @@ class ShowMoreView: UIView {
         super.init(frame: frame)
         nibInit()
         setupUI()
+    }
+
+    func updateUI(listOffer: [String]) {
+        self.dataSource = listOffer
+        tabelView.reloadData()
+        topView.isHidden = listOffer.isEmpty
     }
 
     func setupUI() {
@@ -57,10 +65,12 @@ extension ShowMoreView: UITableViewDelegate {
 
 extension ShowMoreView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return dataSource.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        tableView.dequeue(OfferTVCell.self, for: indexPath)
+        let cell = tableView.dequeue(OfferTVCell.self, for: indexPath)
+        cell.config(offer: dataSource[indexPath.row])
+        return cell
     }
 }

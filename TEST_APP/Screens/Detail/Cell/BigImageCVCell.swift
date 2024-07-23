@@ -14,20 +14,18 @@ class BigImageCVCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-
-    func configView(product: Product) {
-//        imageView.image = UIImage(named: product.image)
-        priceToplabel.text = product.price
         imageView.updateCornerRadius(14)
         labelView.updateCornerRadius(10)
         labelView.layer.borderColor = UIColor.white.cgColor
         labelView.layer.borderWidth = 1
+        imageView.layer.borderWidth = 1.0
+        imageView.layer.borderColor = UIColor.gray.cgColor
     }
 
-    func updateUI() {
-        layer.borderWidth = 2.0
-        layer.borderColor = isSelected ? UIColor.clear.cgColor : UIColor.yellow.cgColor
+    func configView(product: Product, index: Int) {
+        imageView.image = product.images[index]
+        priceToplabel.text = product.price
+
     }
 }
 

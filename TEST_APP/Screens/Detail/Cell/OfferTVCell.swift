@@ -14,9 +14,11 @@ class OfferTVCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
     }
-
     
-
+    func config(offer: String) {
+        detailLabel.text = offer
+    }
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
