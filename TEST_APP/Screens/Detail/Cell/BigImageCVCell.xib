@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell clipsSubviews="YES" contentMode="center" id="gTV-IL-0wX" customClass="BigImageCVCell" customModule="TEST_APP" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="358" height="305"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="358" height="305"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_mock" translatesAutoresizingMaskIntoConstraints="NO" id="GS4-j3-jd6">
+                        <rect key="frame" x="15" y="15" width="328" height="275"/>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                    </imageView>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="my4-J9-nIi">
+                        <rect key="frame" x="314" y="4" width="40" height="25"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z1h-bE-2Zb">
+                                <rect key="frame" x="8" y="8" width="24" height="9"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="9"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="bg_green"/>
+                        <constraints>
+                            <constraint firstItem="z1h-bE-2Zb" firstAttribute="centerX" secondItem="my4-J9-nIi" secondAttribute="centerX" id="1Fe-Ak-QZN"/>
+                            <constraint firstItem="z1h-bE-2Zb" firstAttribute="top" secondItem="my4-J9-nIi" secondAttribute="top" constant="8" id="Rr2-rC-cth"/>
+                            <constraint firstItem="z1h-bE-2Zb" firstAttribute="centerY" secondItem="my4-J9-nIi" secondAttribute="centerY" id="Vlv-Nu-Rl2"/>
+                            <constraint firstItem="z1h-bE-2Zb" firstAttribute="leading" secondItem="my4-J9-nIi" secondAttribute="leading" constant="8" id="cxD-Bc-VgR"/>
+                            <constraint firstAttribute="height" constant="25" id="qmO-gj-DN8"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" name="bg_color"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="GS4-j3-jd6" secondAttribute="trailing" constant="15" id="1EX-9T-Kf2"/>
+                <constraint firstAttribute="bottom" secondItem="GS4-j3-jd6" secondAttribute="bottom" constant="15" id="GE1-px-8Lv"/>
+                <constraint firstItem="GS4-j3-jd6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="15" id="JkX-sA-kJ9"/>
+                <constraint firstItem="GS4-j3-jd6" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Thm-0r-gBr"/>
+                <constraint firstAttribute="trailing" secondItem="my4-J9-nIi" secondAttribute="trailing" constant="4" id="euD-aO-CdO"/>
+                <constraint firstItem="GS4-j3-jd6" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="iUe-eY-vgB"/>
+                <constraint firstItem="my4-J9-nIi" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="ux8-zd-vct"/>
+                <constraint firstItem="GS4-j3-jd6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="ypZ-Sw-5Pg"/>
+            </constraints>
+            <size key="customSize" width="358" height="305"/>
+            <connections>
+                <outlet property="imageView" destination="GS4-j3-jd6" id="ZH9-1A-gvo"/>
+                <outlet property="labelView" destination="my4-J9-nIi" id="iQd-Ar-eJh"/>
+                <outlet property="priceToplabel" destination="z1h-bE-2Zb" id="gNh-F0-1n3"/>
+            </connections>
+            <point key="canvasLocation" x="374.04580152671753" y="109.50704225352113"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="image_mock" width="3200" height="2133"/>
+        <namedColor name="bg_color">
+            <color red="0.72156862745098038" green="0.72156862745098038" blue="0.72156862745098038" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="bg_green">
+            <color red="0.40392156862745099" green="0.59607843137254901" blue="0.50588235294117645" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
